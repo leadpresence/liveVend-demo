@@ -2,18 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:livevend/imports.dart';
 import 'package:livevend/views/UIConstants.dart';
+import 'package:livevend/views/login/passwordView.dart';
 import 'package:livevend/widgets/doNotHaveAccountRegister.dart';
+import 'package:livevend/routes.dart';
 import 'package:livevend/widgets/haveAccountLogin.dart';
 
-class RegisterPassword extends StatefulWidget {
+class RegisterPhoneNumber extends StatefulWidget {
   @override
-  _RegisterPasswordState createState() => _RegisterPasswordState();
+  _RegisterPhoneNumberState createState() => _RegisterPhoneNumberState();
 }
 
-class _RegisterPasswordState extends State<RegisterPassword> {
-  bool _passwordVisible=false;
+class _RegisterPhoneNumberState extends State<RegisterPhoneNumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -89,7 +89,7 @@ class _RegisterPasswordState extends State<RegisterPassword> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "set your password",
+                    "Enter your phone number",
                     style: GoogleFonts.nunitoSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -112,11 +112,11 @@ class _RegisterPasswordState extends State<RegisterPassword> {
                     width: UIConstant.widthMultiplier * 90,
                     height: UIConstant.widthMultiplier * 30,
                     child: TextFormField(
-                      obscureText: !_passwordVisible,
                       style: TextStyle(
                         color: Colors.white,
                       ),
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.phone,
+                      maxLength: 11,
                       decoration: InputDecoration(
                         enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(color: Colors.white70)
@@ -124,26 +124,10 @@ class _RegisterPasswordState extends State<RegisterPassword> {
                         focusedBorder: UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.cyan),
                         ),
-                        hintText: "Type In your password",
+                        hintText: "Type In your phone number",
                         hintStyle:
                         TextStyle(fontSize: 10.0, color: Colors.grey),
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            // Based on passwordVisible state choose the icon
-                            _passwordVisible
-                                ? Icons.visibility
-                                : Icons.visibility_off,
-                            color: Theme.of(context).primaryColorDark,
-                          ),
-                          onPressed: () {
-                            // Update the state i.e. toogle the state of passwordVisible variable
-                            setState(() {
-                              _passwordVisible = !_passwordVisible;
-                            });
-                          },
-                        ),
                       ),
-
                     ),
                   ),
                 ],
@@ -160,7 +144,8 @@ class _RegisterPasswordState extends State<RegisterPassword> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: (){
-                      Navigator.pushNamed(context, LoginRoute);
+                      Navigator.pushNamed(context, RegisterCompanyRoute);
+
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -170,13 +155,13 @@ class _RegisterPasswordState extends State<RegisterPassword> {
                         ),
                       ),
                       height: 45,
-                      width: 130,
+                      width: 90,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            "Register Account",
+                            "OK",
                             style: TextStyle(
                                 fontSize: 14,
                                 color: Theme.of(context).primaryColor,
@@ -210,19 +195,48 @@ class _RegisterPasswordState extends State<RegisterPassword> {
                         children: <Widget>[
                           Icon(Icons.arrow_back, color: Colors.blueGrey[500],size: 25,
                           )
+
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: UIConstant.heightMultiplier,),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, RegisterCompanyRoute);
+
+                      },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(9),
+
+                        ),
+                        border: Border.all(
+                          color: Colors.blueGrey[500],
+                        ),
+                      ),
+                      height: 45,
+                      width: 50,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(Icons.arrow_forward, color: Colors.blueGrey[500],size: 25,
+                          )
+
                         ],
                       ),
                     ),
                   ),
 
+
                 ],
               ),
             ),
-
-
-            //forgot password
             SizedBox(height: UIConstant.heightMultiplier*18,),
-            //do not have Account
+
             Padding(
               padding: const EdgeInsets.only(
                   top: 15,

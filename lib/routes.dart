@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:livevend/views/Register/RegisterWithDetails.dart';
 import 'package:livevend/views/Register/registerCompany.dart';
 import 'package:livevend/views/Register/registerEmail.dart';
+import 'package:livevend/views/Register/registerPhoneNumber.dart';
 import 'package:livevend/views/Register/registerSetPassword.dart';
 import 'package:livevend/views/login/loginView.dart';
 import 'package:livevend/startUpView.dart';
@@ -21,7 +22,8 @@ const String LoginWithGoogleRoute = "LoginWithGoogle";
 const String RegsterWithDetailsRoute = "RegsterWithDetails";
 const String RegisterEmailRoute = "RegisterEmail";
 const String RegisterCompanyRoute = "RegisterCompany";
-const String RegisterPasswordRoute = "RegisterPassword";
+const String RegisterPhoneNumberRoute = "RegisterPhoneNumber";
+const String RegisterPasswordRoute = "RegisterPasswordRoute";
 
 
 
@@ -107,6 +109,15 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
                 name: settings.name
             ),
             builder: (BuildContext context)=>RegisterPassword()
+
+        );
+    case RegisterPhoneNumberRoute:
+      return
+        MaterialPageRoute(
+            settings: RouteSettings(
+                name: settings.name
+            ),
+            builder: (BuildContext context)=>RegisterPhoneNumber()
 
         );
     case WelcomeRoute:

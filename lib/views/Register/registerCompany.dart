@@ -143,7 +143,7 @@ class _RegisterCompanyState extends State<RegisterCompany> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: (){
-                      Navigator.pushNamed(context, PasswordRoute);
+                      Navigator.pushNamed(context, RegisterPasswordRoute);
 
                     },
                     child: Container(
@@ -171,32 +171,37 @@ class _RegisterCompanyState extends State<RegisterCompany> {
                     ),
                   ),
                   Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(9),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(9),
 
+                        ),
+                        border: Border.all(
+                          color: Colors.blueGrey[500],
+                        ),
                       ),
-                      border: Border.all(
-                        color: Colors.blueGrey[500],
-                      ),
-                    ),
-                    height: 45,
-                    width: 50,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.arrow_back, color: Colors.blueGrey[500],size: 25,
-                        )
+                      height: 45,
+                      width: 50,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(Icons.arrow_back, color: Colors.blueGrey[500],size: 25,
+                          )
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(width: UIConstant.heightMultiplier,),
                   GestureDetector(
-                    onTap: (){Navigator.pushNamed(context, PasswordRoute);},
+                    onTap: (){Navigator.pushNamed(context, RegisterPasswordRoute);},
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.transparent,

@@ -140,7 +140,7 @@ class _RegisterState extends State<Register> {
                 children: <Widget>[
                   Spacer(),
                   GestureDetector(
-                    onTap: (){Navigator.pushNamed(context, PasswordRoute);},
+                    onTap: (){Navigator.pushNamed(context, RegisterEmailRoute);},
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.transparent,
