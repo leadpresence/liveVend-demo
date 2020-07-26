@@ -1,21 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:livevend/views/UIConstants.dart';
-import 'package:livevend/views/login/passwordView.dart';
 import 'package:livevend/widgets/doNotHaveAccountRegister.dart';
-import 'package:livevend/routes.dart';
+import 'package:livevend/widgets/haveAccountLogin.dart';
 
-class Login extends StatefulWidget {
+import '../../routes.dart';
+import '../UIConstants.dart';
+class Register extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _RegisterState createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return       Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
@@ -69,7 +67,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Login",
+                    "Register",
                     style: GoogleFonts.nunitoSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -88,7 +86,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Enter your Email address",
+                    "Enter Full Name",
                     style: GoogleFonts.nunitoSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -116,16 +114,16 @@ class _LoginState extends State<Login> {
                       ),
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white70)
-                      ),
-    focusedBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.cyan),
-    ),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white70)
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.cyan),
+                        ),
                         hintText: "Type In your email",
                         hintStyle:
                         TextStyle(fontSize: 10.0, color: Colors.grey),
-    ),
+                      ),
                     ),
                   ),
                 ],
@@ -140,60 +138,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize:  MainAxisSize.min,
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: (){
-                      Navigator.pushNamed(context, PasswordRoute);
-
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(9),
-                        ),
-                      ),
-                      height: 45,
-                      width: 90,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "OK",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.normal),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
                   Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(9),
-
-                      ),
-                      border: Border.all(
-                        color: Colors.blueGrey[500],
-                      ),
-                    ),
-                    height: 45,
-                    width: 50,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.arrow_back, color: Colors.blueGrey[500],size: 25,
-                            )
-
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: UIConstant.heightMultiplier,),
                   GestureDetector(
                     onTap: (){Navigator.pushNamed(context, PasswordRoute);},
                     child: Container(
@@ -225,11 +170,12 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-            SizedBox(height: UIConstant.heightMultiplier*8,),
+
+
 
             Padding(
               padding: const EdgeInsets.only(
-                top: 15,
+                  top: 10,
                   left:8.0,right:8.0
               ),
               child: Row(
@@ -241,7 +187,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Forgot your password?",
+                        "Or Register To start using",
                         style: TextStyle(
                             fontSize: 14,
                             color: Colors.white,
@@ -253,10 +199,60 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-           SizedBox(height: UIConstant.heightMultiplier*10,),
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, PasswordRoute);
+
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(9),
+                        ),
+                      ),
+                      height: 45,
+                      width: 230,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage("assets/images/G+.jpeg")
+                                )
+
+                            ),
+                          ),
+                          SizedBox(width: 10,),
+                          Text(
+    "Create Account with Google",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.normal),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+            SizedBox(height: UIConstant.heightMultiplier*7,),
             Padding(
               padding: const EdgeInsets.only(
-                  top: 15,
+                  top: 1,
                   left:8.0,right:8.0
               ),
               child: Row(
@@ -267,7 +263,7 @@ class _LoginState extends State<Login> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      doNotHaveAccount(context)
+                      haveAccount(context)
                     ],
                   ),
 
@@ -280,5 +276,6 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+
   }
 }

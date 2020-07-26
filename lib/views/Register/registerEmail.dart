@@ -6,13 +6,14 @@ import 'package:livevend/views/UIConstants.dart';
 import 'package:livevend/views/login/passwordView.dart';
 import 'package:livevend/widgets/doNotHaveAccountRegister.dart';
 import 'package:livevend/routes.dart';
+import 'package:livevend/widgets/haveAccountLogin.dart';
 
-class Login extends StatefulWidget {
+class RegisterEmail extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _RegisterEmailState createState() => _RegisterEmailState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterEmailState extends State<RegisterEmail> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +70,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Login",
+                    "Register",
                     style: GoogleFonts.nunitoSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -88,7 +89,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Enter your Email address",
+                    "Enter your email address",
                     style: GoogleFonts.nunitoSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -116,16 +117,16 @@ class _LoginState extends State<Login> {
                       ),
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white70)
-                      ),
-    focusedBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.cyan),
-    ),
-                        hintText: "Type In your email",
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white70)
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.cyan),
+                        ),
+                        hintText: "Type In your email address",
                         hintStyle:
                         TextStyle(fontSize: 10.0, color: Colors.grey),
-    ),
+                      ),
                     ),
                   ),
                 ],
@@ -188,14 +189,14 @@ class _LoginState extends State<Login> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(Icons.arrow_back, color: Colors.blueGrey[500],size: 25,
-                            )
+                        )
 
                       ],
                     ),
                   ),
                   SizedBox(width: UIConstant.heightMultiplier,),
                   GestureDetector(
-                    onTap: (){Navigator.pushNamed(context, PasswordRoute);},
+                    onTap: (){Navigator.pushNamed(context, RegisterCompanyRoute);},
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.transparent,
@@ -225,35 +226,8 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-            SizedBox(height: UIConstant.heightMultiplier*8,),
+            SizedBox(height: UIConstant.heightMultiplier*18,),
 
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 15,
-                  left:8.0,right:8.0
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize:  MainAxisSize.min,
-                children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Forgot your password?",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-
-                ],
-              ),
-            ),
-           SizedBox(height: UIConstant.heightMultiplier*10,),
             Padding(
               padding: const EdgeInsets.only(
                   top: 15,
@@ -267,7 +241,7 @@ class _LoginState extends State<Login> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      doNotHaveAccount(context)
+                      haveAccount(context)
                     ],
                   ),
 

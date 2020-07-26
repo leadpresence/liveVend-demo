@@ -6,13 +6,14 @@ import 'package:livevend/views/UIConstants.dart';
 import 'package:livevend/views/login/passwordView.dart';
 import 'package:livevend/widgets/doNotHaveAccountRegister.dart';
 import 'package:livevend/routes.dart';
+import 'package:livevend/widgets/haveAccountLogin.dart';
 
-class Login extends StatefulWidget {
+class RegisterWithDetails extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _RegisterWithDetailsState createState() => _RegisterWithDetailsState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterWithDetailsState extends State<RegisterWithDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +70,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Login",
+                    "Register",
                     style: GoogleFonts.nunitoSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -88,7 +89,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Enter your Email address",
+                    "Enter your full Name",
                     style: GoogleFonts.nunitoSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -114,18 +115,18 @@ class _LoginState extends State<Login> {
                       style: TextStyle(
                         color: Colors.white,
                       ),
-                      keyboardType: TextInputType.emailAddress,
+                      keyboardType: TextInputType.text,
                       decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white70)
-                      ),
-    focusedBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.cyan),
-    ),
-                        hintText: "Type In your email",
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white70)
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.cyan),
+                        ),
+                        hintText: "Type In your full Name",
                         hintStyle:
                         TextStyle(fontSize: 10.0, color: Colors.grey),
-    ),
+                      ),
                     ),
                   ),
                 ],
@@ -170,27 +171,32 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                   Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(9),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, RegisterEmailRoute);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(9),
 
+                        ),
+                        border: Border.all(
+                          color: Colors.blueGrey[500],
+                        ),
                       ),
-                      border: Border.all(
-                        color: Colors.blueGrey[500],
-                      ),
-                    ),
-                    height: 45,
-                    width: 50,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.arrow_back, color: Colors.blueGrey[500],size: 25,
-                            )
+                      height: 45,
+                      width: 50,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Icon(Icons.arrow_back, color: Colors.blueGrey[500],size: 25,
+                          )
 
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(width: UIConstant.heightMultiplier,),
@@ -225,35 +231,8 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-            SizedBox(height: UIConstant.heightMultiplier*8,),
+            SizedBox(height: UIConstant.heightMultiplier*18,),
 
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 15,
-                  left:8.0,right:8.0
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize:  MainAxisSize.min,
-                children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Forgot your password?",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
-
-                ],
-              ),
-            ),
-           SizedBox(height: UIConstant.heightMultiplier*10,),
             Padding(
               padding: const EdgeInsets.only(
                   top: 15,
@@ -267,7 +246,7 @@ class _LoginState extends State<Login> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      doNotHaveAccount(context)
+                      haveAccount(context)
                     ],
                   ),
 

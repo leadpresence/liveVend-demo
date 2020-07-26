@@ -2,17 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:livevend/imports.dart';
 import 'package:livevend/views/UIConstants.dart';
-import 'package:livevend/views/login/passwordView.dart';
 import 'package:livevend/widgets/doNotHaveAccountRegister.dart';
-import 'package:livevend/routes.dart';
+import 'package:livevend/widgets/haveAccountLogin.dart';
 
-class Login extends StatefulWidget {
+class RegisterPassword extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _RegisterPasswordState createState() => _RegisterPasswordState();
 }
 
-class _LoginState extends State<Login> {
+class _RegisterPasswordState extends State<RegisterPassword> {
+  bool _passwordVisible=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +70,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Login",
+                    "Register",
                     style: GoogleFonts.nunitoSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -88,7 +89,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "Enter your Email address",
+                    "set your password",
                     style: GoogleFonts.nunitoSans(
                         color: Colors.white,
                         fontWeight: FontWeight.w500,
@@ -111,21 +112,38 @@ class _LoginState extends State<Login> {
                     width: UIConstant.widthMultiplier * 90,
                     height: UIConstant.widthMultiplier * 30,
                     child: TextFormField(
+                      obscureText: !_passwordVisible,
                       style: TextStyle(
                         color: Colors.white,
                       ),
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white70)
-                      ),
-    focusedBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.cyan),
-    ),
-                        hintText: "Type In your email",
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white70)
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.cyan),
+                        ),
+                        hintText: "Type In your password",
                         hintStyle:
                         TextStyle(fontSize: 10.0, color: Colors.grey),
-    ),
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            // Based on passwordVisible state choose the icon
+                            _passwordVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Theme.of(context).primaryColorDark,
+                          ),
+                          onPressed: () {
+                            // Update the state i.e. toogle the state of passwordVisible variable
+                            setState(() {
+                              _passwordVisible = !_passwordVisible;
+                            });
+                          },
+                        ),
+                      ),
+
                     ),
                   ),
                 ],
@@ -142,8 +160,7 @@ class _LoginState extends State<Login> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: (){
-                      Navigator.pushNamed(context, PasswordRoute);
-
+                      Navigator.pushNamed(context, LoginRoute);
                     },
                     child: Container(
                       decoration: BoxDecoration(
@@ -153,13 +170,13 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                       height: 45,
-                      width: 90,
+                      width: 130,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            "OK",
+                            "Register Account",
                             style: TextStyle(
                                 fontSize: 14,
                                 color: Theme.of(context).primaryColor,
@@ -188,72 +205,19 @@ class _LoginState extends State<Login> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(Icons.arrow_back, color: Colors.blueGrey[500],size: 25,
-                            )
-
+                        )
                       ],
                     ),
                   ),
-                  SizedBox(width: UIConstant.heightMultiplier,),
-                  GestureDetector(
-                    onTap: (){Navigator.pushNamed(context, PasswordRoute);},
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(9),
-
-                        ),
-                        border: Border.all(
-                          color: Colors.blueGrey[500],
-                        ),
-                      ),
-                      height: 45,
-                      width: 50,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Icon(Icons.arrow_forward, color: Colors.blueGrey[500],size: 25,
-                          )
-
-                        ],
-                      ),
-                    ),
-                  ),
-
 
                 ],
               ),
             ),
-            SizedBox(height: UIConstant.heightMultiplier*8,),
 
-            Padding(
-              padding: const EdgeInsets.only(
-                top: 15,
-                  left:8.0,right:8.0
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize:  MainAxisSize.min,
-                children: <Widget>[
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        "Forgot your password?",
-                        style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold),
-                      )
-                    ],
-                  ),
 
-                ],
-              ),
-            ),
-           SizedBox(height: UIConstant.heightMultiplier*10,),
+            //forgot password
+            SizedBox(height: UIConstant.heightMultiplier*18,),
+            //do not have Account
             Padding(
               padding: const EdgeInsets.only(
                   top: 15,
@@ -267,7 +231,7 @@ class _LoginState extends State<Login> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      doNotHaveAccount(context)
+                      haveAccount(context)
                     ],
                   ),
 

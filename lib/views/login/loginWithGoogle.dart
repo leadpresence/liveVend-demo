@@ -7,15 +7,16 @@ import 'package:livevend/views/login/passwordView.dart';
 import 'package:livevend/widgets/doNotHaveAccountRegister.dart';
 import 'package:livevend/routes.dart';
 
-class Login extends StatefulWidget {
+class LoginWithGoogle extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _LoginWithGoogleState createState() => _LoginWithGoogleState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginWithGoogleState extends State<LoginWithGoogle> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return
+      Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SingleChildScrollView(
         child: Column(
@@ -116,16 +117,16 @@ class _LoginState extends State<Login> {
                       ),
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                      enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white70)
-                      ),
-    focusedBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Colors.cyan),
-    ),
+                        enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white70)
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(color: Colors.cyan),
+                        ),
                         hintText: "Type In your email",
                         hintStyle:
                         TextStyle(fontSize: 10.0, color: Colors.grey),
-    ),
+                      ),
                     ),
                   ),
                 ],
@@ -140,60 +141,7 @@ class _LoginState extends State<Login> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize:  MainAxisSize.min,
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: (){
-                      Navigator.pushNamed(context, PasswordRoute);
-
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(9),
-                        ),
-                      ),
-                      height: 45,
-                      width: 90,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            "OK",
-                            style: TextStyle(
-                                fontSize: 14,
-                                color: Theme.of(context).primaryColor,
-                                fontWeight: FontWeight.normal),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
                   Spacer(),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(9),
-
-                      ),
-                      border: Border.all(
-                        color: Colors.blueGrey[500],
-                      ),
-                    ),
-                    height: 45,
-                    width: 50,
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.arrow_back, color: Colors.blueGrey[500],size: 25,
-                            )
-
-                      ],
-                    ),
-                  ),
-                  SizedBox(width: UIConstant.heightMultiplier,),
                   GestureDetector(
                     onTap: (){Navigator.pushNamed(context, PasswordRoute);},
                     child: Container(
@@ -225,11 +173,12 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-            SizedBox(height: UIConstant.heightMultiplier*8,),
+
+
 
             Padding(
               padding: const EdgeInsets.only(
-                top: 15,
+                  top: 10,
                   left:8.0,right:8.0
               ),
               child: Row(
@@ -241,7 +190,7 @@ class _LoginState extends State<Login> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(
-                        "Forgot your password?",
+                        "Or Login with",
                         style: TextStyle(
                             fontSize: 14,
                             color: Colors.white,
@@ -253,10 +202,61 @@ class _LoginState extends State<Login> {
                 ],
               ),
             ),
-           SizedBox(height: UIConstant.heightMultiplier*10,),
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.pushNamed(context, PasswordRoute);
+
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(9),
+                        ),
+                      ),
+                      height: 45,
+                      width: 200,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            height: 25,
+                            width: 25,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage("assets/images/G+.jpeg")
+                              )
+
+                            ),
+                          ),
+                          SizedBox(width: 10,),
+                          Text(
+                            "Login with Google",
+                            style: TextStyle(
+                                fontSize: 14,
+                                color: Theme.of(context).primaryColor,
+                                fontWeight: FontWeight.normal),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+            SizedBox(height: UIConstant.heightMultiplier*7,),
+
             Padding(
               padding: const EdgeInsets.only(
-                  top: 15,
+                  top: 10,
                   left:8.0,right:8.0
               ),
               child: Row(

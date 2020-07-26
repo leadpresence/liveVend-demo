@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:livevend/routes.dart';
 import 'package:livevend/startUpView.dart';
+import 'package:livevend/views/Register/RegisterWithDetails.dart';
+import 'package:livevend/views/Register/registerEmail.dart';
+import 'package:livevend/views/Register/registerSetPassword.dart';
+import 'package:livevend/views/Register/registerWithGoogleView.dart';
 import 'package:livevend/views/UIConstants.dart';
 import 'package:livevend/views/login/loginView.dart';
+import 'package:livevend/views/login/loginWithGoogle.dart';
+import 'package:livevend/views/login/passwordView.dart';
+import 'package:livevend/views/welcome/welcome.dart';
 
 void main() {
   runApp(LiveVend());
@@ -32,7 +40,8 @@ class LiveVend extends StatelessWidget {
             ),
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: Login(),
+          onGenerateRoute: onGenerateRoute,
+          home: WelcomeView(),
         );
       });
   });
